@@ -12,7 +12,6 @@ skipped_count = len(lines) - valid_count
 
 print(valid_count)
 print(skipped_count)
-
 if records:
     city = warmest_city(records)
     print(f"{averages[city]:.1f}")
