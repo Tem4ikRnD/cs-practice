@@ -1,9 +1,28 @@
+def parse_record(line: str) -> dict:
+    flag = False
+    parts = line.split(";")
+    if len(parts) != 3:
+        flag = True
+        raise ValueError("Неверный формат ввода")
 
+    city, temp, date = parts
+
+    if city == "" or date == "":
+        flag = True
+        raise ValueError("Город или дата не указаны")
+
+    if float(temp):
+        temperature = float(temp)
+    else:
+        flag = True
+        raise ValueError("Температура должна быть числом")
+
+    return city, temperature, date, flag
 
 def read_valid(lines: list[str]) -> list[dict]:
     records = []
     for line in lines:
-        if line == "":
+        if line == "" or parse_record(line)[3]:
             continue
     return records
 
