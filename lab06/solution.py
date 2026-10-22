@@ -6,12 +6,14 @@ def count_by_extension(paths: list[str]) -> dict[str, int]:
         result[extension] = result.get(extension, 0) + 1
     return result
 
+
 def deepest_path(paths: list[str]) -> str:
     return min(paths, key = lambda path: (-path.count("/"), path)) if paths else ""
 
-def human_size(n_bytes: int) -> str:
+
+def human_size(bytes: int) -> str:
     units = ["Б", "КБ", "МБ", "ГБ", "ТБ"]
-    size = n_bytes
+    size = bytes
     unit_index = 0
     while size >= 1024 and unit_index < len(units) - 1:
         size /= 1024
