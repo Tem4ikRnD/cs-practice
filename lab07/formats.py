@@ -12,7 +12,7 @@ def csv_to_records(text: str) -> list[dict]:
         values = line.split(",")
         record = {}
         for i in range(len(headers)):
-            record[headers[i]] = values[i]
+            record[headers[i].strip()] = values[i].strip()
         records.append(record)
     return records
 
